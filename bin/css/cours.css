@@ -1,0 +1,115 @@
+.shadow{
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5,0,0,0);
+}
+
+.white-bg{
+	-fx-background-color: #fff;
+	-fx-background-radius: 8px;
+}
+
+.search{
+	-fx-background-color: transparent;
+	-fx-border-color: linear-gradient(to bottom right, #F61B1B, #EC5837);
+	-fx-border-width: .8px;
+	-fx-border-radius: 8px;
+	-fx-font-family: "Tahoma";
+	-fx-font-size: 14px;
+	-fx-padding: 0px 0px 0px 28px;
+}
+
+.table-view{
+	-fx-background-color: transparent;
+	-fx-padding: 0px;
+	-fx-border-color: linear-gradient(to bottom right, #F61B1B, #EC5837);
+	-fx-border-width: 2px;
+	-fx-border-radius: 8px;
+}
+
+.table-view .table-column{
+	-fx-alignment: CENTER;
+}
+
+.table-view .column-header-background{
+	-fx-background-color: linear-gradient(to bottom right, #F61B1B, #EC5837);
+	-fx-background-radius: 8px 8px 0px 0px;
+	-fx-background-insets: 0 0 0 0;
+} 
+
+.table-view .column-header, .filter{
+	-fx-background-color: transparent;
+	-fx-size: 40px;
+}
+
+.table-view .column-header .label{
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial";
+}
+
+.textfield{
+	-fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+	-fx-background-radius: 5px;
+	-fx-border-color: linear-gradient(to bottom right, #F61B1B, #EC5837);
+	-fx-border-width: .8px;
+	-fx-font-family: "Tahoma";
+	-fx-border-radius: 5px;
+}
+.textfield:focused{
+	-fx-background-color: #fff;
+	-fx-border-width: 1px;
+}
+
+.insert-btn{
+	-fx-background-color: transparent;
+	-fx-text-fill: red;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+	-fx-cursor: hand;
+}
+
+.ajouter-btn{
+	-fx-background-color: #2d5278;
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+	-fx-text-fill: #fff;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+}
+.ajouter-btn:hover{
+	-fx-background-color: #2268ae;
+}
+
+.modifier-btn{
+	-fx-background-color: #2d7755;
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+	-fx-text-fill: #fff;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+}
+.modifier-btn:hover{
+	-fx-background-color: #22ad72;
+}
+
+.supprimer-btn{
+	-fx-background-color: #90242f;
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+	-fx-text-fill: #fff;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+}
+.supprimer-btn:hover{
+	-fx-background-color: #c51f32;
+}
+
+.nouveau-btn{
+	-fx-background-color: #6e2275;
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+	-fx-text-fill: #fff;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+}
+.nouveau-btn:hover{
+	-fx-background-color: #ae21ac;
+}

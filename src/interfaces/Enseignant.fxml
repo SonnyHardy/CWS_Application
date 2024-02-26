@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="109.0" layoutY="74.0" prefHeight="696.0" prefWidth="1071.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="9.0" layoutY="10.0" prefHeight="450.0" prefWidth="787.0" stylesheets="@../css/etudiant.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <AnchorPane layoutX="9.0" layoutY="1.0" prefHeight="676.0" prefWidth="676.0" stylesheets="@../css/etudiant.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TextField layoutX="21.0" layoutY="14.0" prefHeight="32.0" prefWidth="318.0" promptText="Search" styleClass="search" stylesheets="@../css/etudiant.css" />
+                        <ImageView fitHeight="26.0" fitWidth="29.0" layoutX="302.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                        <ScrollPane layoutX="7.0" layoutY="71.0" prefHeight="543.0" prefWidth="660.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0">
+                           <content>
+                              <TableView prefHeight="577.0" prefWidth="1037.0">
+                                <columns>
+                                  <TableColumn prefWidth="83.0" text="Num CNI" />
+                                  <TableColumn prefWidth="105.0" text="Nom" />
+                                    <TableColumn prefWidth="95.0" text="Prénom" />
+                                    <TableColumn prefWidth="130.0" text="Sexe" />
+                                    <TableColumn prefWidth="113.0" text="Adresse" />
+                                    <TableColumn prefWidth="122.0" text="Contrat" />
+                                    <TableColumn prefWidth="93.0" text="Email" />
+                                    <TableColumn minWidth="0.0" prefWidth="151.0" text="Telephone" />
+                                    <TableColumn minWidth="0.0" prefWidth="143.0" text="Salaire" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="688.0" prefHeight="676.0" prefWidth="363.0" stylesheets="@../css/etudiant.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="688.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="129.0" layoutY="14.0" text="Détails" textFill="#6b5e5e">
+                           <font>
+                              <Font name="Tahoma Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="14.0" layoutY="74.0" prefHeight="516.0" prefWidth="338.0" style="-fx-background-color: #fbf9f9; -fx-background-radius: 8px;" styleClass="shadow" stylesheets="@../css/etudiant.css">
+                           <children>
+                              <AnchorPane layoutX="99.0" layoutY="14.0" prefHeight="125.0" prefWidth="141.0" stylesheets="@../css/etudiant.css">
+                                 <children>
+                                    <ImageView fitHeight="125.0" fitWidth="141.0" layoutX="36.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="11.0" layoutY="160.0" prefHeight="344.0" prefWidth="318.0" style="-fx-background-color: #fbf9f9; -fx-background-radius: 8px;" styleClass="shadow" stylesheets="@../css/etudiant.css">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="33.0" text="Numéro CNI:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="29.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="59.0" text="Nom:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="55.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="84.0" text="Prénom:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="80.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="110.0" text="Sexe:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="106.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="140.0" text="Adresse:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="140.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="48.0" layoutY="164.0" text="Contrat:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="164.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="186.0" text="Email:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="186.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="48.0" layoutY="212.0" text="Telephone:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="212.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="236.0" text="Salaire:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="236.0" text="...">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="51.0" layoutY="262.0" text="Cours Dispensés:">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="262.0" text="Voire Cours" textFill="RED">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <JFXButton layoutX="29.0" layoutY="620.0" prefHeight="38.0" prefWidth="122.0" styleClass="modifier-btn" stylesheets="@../css/etudiant.css" text="Modifier">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/modifier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="202.0" layoutY="620.0" prefHeight="38.0" prefWidth="122.0" styleClass="supprimer-btn" stylesheets="@../css/etudiant.css" text="Supprimer">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/supprimer.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton layoutX="39.0" layoutY="630.0" prefHeight="38.0" prefWidth="122.0" styleClass="ajouter-btn" stylesheets="@../css/etudiant.css" text="Ajouter" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="270.0">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/ajouter.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,17 @@
+.nav-form{
+	-fx-background-color: linear-gradient(to bottom right, #F61B1B, #EC5837);
+}
+
+.shadow{
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5,0,0,0);
+}
+
+.white-bg{
+	-fx-background-color: #fff;
+	-fx-background-radius: 8px;
+}
+
+.card{
+	-fx-background-color: linear-gradient(to right, #821c11, #dd483a);
+	-fx-background-radius: 4px;
+}
