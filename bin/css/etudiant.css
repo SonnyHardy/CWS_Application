@@ -139,3 +139,15 @@
 .nouveau-btn:hover{
 	-fx-background-color: #ae21ac;
 }
+
+.imprimer-btn{
+	-fx-background-color: linear-gradient(to bottom, #F61B1B, #EC5837);
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+	-fx-text-fill: #fff;
+	-fx-font-size: 14px;
+	-fx-font-family: "Arial";
+}
+.imprimer-btn:hover{
+	-fx-background-color: #FB5B16;
+}

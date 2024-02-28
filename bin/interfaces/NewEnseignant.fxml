@@ -11,24 +11,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewEnseignantController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="478.0" prefWidth="960.0" style="-fx-background-color: #fff;" styleClass="shadow" stylesheets="@../css/etudiant.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField layoutX="186.0" layoutY="70.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_cni" layoutX="186.0" layoutY="70.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="122.0" layoutY="136.0" text="Nom:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="132.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_nom" layoutX="186.0" layoutY="132.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="102.0" layoutY="190.0" text="Prénom:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="184.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
-            <ComboBox layoutX="186.0" layoutY="241.0" prefHeight="30.0" prefWidth="157.0" promptText="Choisir" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_prenom" layoutX="186.0" layoutY="184.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <ComboBox fx:id="cbx_sexe" layoutX="186.0" layoutY="241.0" prefHeight="30.0" prefWidth="157.0" promptText="Choisir" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="112.0" layoutY="245.0" text="Sexe:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
@@ -39,13 +39,13 @@
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="480.0" layoutY="241.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_salaire" layoutX="480.0" layoutY="241.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="92.0" layoutY="299.0" text="Adresse:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="481.0" layoutY="72.0" prefHeight="30.0" prefWidth="157.0" promptText="Choisir" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <ComboBox fx:id="cbx_contrat" layoutX="481.0" layoutY="72.0" prefHeight="30.0" prefWidth="157.0" promptText="Choisir" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="412.0" layoutY="76.0" text="Contrat:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
@@ -56,24 +56,24 @@
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="483.0" layoutY="132.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_email" layoutX="483.0" layoutY="132.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <Label layoutX="388.0" layoutY="190.0" text="Telephone:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="481.0" layoutY="184.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_telephone" layoutX="481.0" layoutY="184.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
             <AnchorPane layoutX="734.0" layoutY="69.0" prefHeight="200.0" prefWidth="157.0" stylesheets="@../css/etudiant.css">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXButton layoutY="153.0" prefHeight="46.0" prefWidth="157.0" styleClass="insert-btn" stylesheets="@../css/etudiant.css" text="Insérer" />
+                  <ImageView fx:id="img_enseignant" fitHeight="200.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXButton layoutY="153.0" onAction="#insererImage" prefHeight="46.0" prefWidth="157.0" styleClass="insert-btn" stylesheets="@../css/etudiant.css" text="Insérer" />
                </children>
                <styleClass>
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                </styleClass>
             </AnchorPane>
-            <JFXButton layoutX="253.0" layoutY="437.0" prefHeight="40.0" prefWidth="107.0" styleClass="ajouter-btn" stylesheets="@../css/etudiant.css" text="Valider">
+            <JFXButton fx:id="btn_valider" layoutX="253.0" layoutY="437.0" onAction="#valider" prefHeight="40.0" prefWidth="107.0" styleClass="ajouter-btn" stylesheets="@../css/etudiant.css" text="Valider">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="417.0" layoutY="437.0" prefHeight="40.0" prefWidth="107.0" styleClass="nouveau-btn" stylesheets="@../css/etudiant.css" text="Nouveau">
+            <JFXButton fx:id="btn_nouveau" layoutX="417.0" layoutY="437.0" onAction="#nouveau" prefHeight="40.0" prefWidth="107.0" styleClass="nouveau-btn" stylesheets="@../css/etudiant.css" text="Nouveau">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,7 +91,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="577.0" layoutY="437.0" prefHeight="40.0" prefWidth="107.0" styleClass="supprimer-btn" stylesheets="@../css/etudiant.css" text="Annuler">
+            <JFXButton fx:id="btn_annuler" layoutX="577.0" layoutY="437.0" onAction="#annuler" prefHeight="40.0" prefWidth="107.0" styleClass="supprimer-btn" stylesheets="@../css/etudiant.css" text="Annuler">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -102,7 +102,7 @@
             </JFXButton>
             <AnchorPane layoutX="98.0" layoutY="7.0" prefHeight="30.0" prefWidth="125.0" styleClass="top-form" stylesheets="@../css/etudiant.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="916.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="close" stylesheets="@../css/etudiant.css">
+                  <Button fx:id="btn_close" layoutX="916.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="44.0" styleClass="close" stylesheets="@../css/etudiant.css">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -118,7 +118,7 @@
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="293.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
+            <TextField fx:id="txt_adresse" layoutX="186.0" layoutY="293.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
          </children>
       </AnchorPane>
    </children>

@@ -301,7 +301,7 @@ public class NewEtudiantController implements Initializable{
 	    		}else {
 	    			Alert alert = new Alert(Alert.AlertType.ERROR);
 					 alert.setHeaderText("CWS Application");
-					 alert.setContentText("Veuillez remplir tous les champs");
+					 alert.setContentText("Veuillez remplir correctement tous les champs");
 					 alert.showAndWait();
 	    		}
 	    	}

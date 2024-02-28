@@ -227,16 +227,7 @@ public class EtudiantController implements Initializable{
 							st = cnx.prepareStatement(sql);
 							st.executeUpdate();
 							
-							lbl_matricule.setText("...");
-							lbl_nom.setText("...");
-							lbl_prenom.setText("...");
-							lbl_specialite.setText("...");
-							lbl_adresse.setText("...");
-							lbl_dateNais.setText("...");
-							lbl_sexe.setText("...");
-							lbl_email.setText("...");
-							lbl_telephone.setText("...");
-							img_etudiant.setImage(null);
+							clearDetails();
 							showTable();
 							btn_modifier.setDisable(true);
 					    	btn_supprimer.setDisable(true);

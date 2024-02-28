@@ -31,7 +31,7 @@ public class Main extends Application {
 		
 		
 		try {	
-			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/Etudiant.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/EmploiTemps.fxml"));
 			Scene scene = new Scene(root);
 			
 			root.setOnMousePressed((MouseEvent event) ->{
