@@ -158,7 +158,7 @@ public class EmploiTempsController implements Initializable{
 	    void imprimer() {
 	    	Document document = new Document();
 	    	
-	    	if (dp_date1.getValue() == null || dp_date2.getValue() == null || cbx_specialite.getValue().isBlank()) {
+	    	if (dp_date1.getValue() == null || dp_date2.getValue() == null || cbx_specialite.getSelectionModel().getSelectedItem() == null) {
 	    		Alert alert = new Alert(Alert.AlertType.ERROR);
 				 alert.setHeaderText("CWS Application");
 				 alert.setContentText("Veuillez remplir tous les champs de l'entete");

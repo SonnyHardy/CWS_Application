@@ -8,28 +8,30 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VoireCoursController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VoireNoteController">
    <children>
       <AnchorPane layoutX="187.0" layoutY="134.0" prefHeight="696.0" prefWidth="1071.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="49.0" layoutY="60.0" prefHeight="439.0" prefWidth="511.0" stylesheets="@../css/cours.css">
+            <AnchorPane layoutX="49.0" layoutY="60.0" prefHeight="439.0" prefWidth="511.0" stylesheets="@../css/cours.css" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="49.0">
                <styleClass>
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                </styleClass>
                <children>
-                  <TableView fx:id="table_cours" layoutX="9.0" layoutY="8.0" onMouseClicked="#tableCoursClick" prefHeight="419.0" prefWidth="493.0">
+                  <TableView fx:id="table_note" layoutX="9.0" layoutY="8.0" prefHeight="419.0" prefWidth="493.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
                     <columns>
-                      <TableColumn fx:id="col_specialite" prefWidth="184.0" text="Spécialité" />
-                        <TableColumn fx:id="col_matiere" minWidth="0.0" prefWidth="208.0" text="Matière" />
-                        <TableColumn fx:id="col_volume" minWidth="0.0" prefWidth="98.0" text="Volume Horaire" />
+                      <TableColumn fx:id="col_specialite" prefWidth="128.0" text="Spécialité" />
+                        <TableColumn fx:id="col_evaluation" minWidth="0.0" prefWidth="153.0" text="Evaluation" />
+                        <TableColumn fx:id="col_semestre" minWidth="0.0" prefWidth="116.0" text="Semestre" />
+                        <TableColumn fx:id="col_matiere" minWidth="0.0" prefWidth="138.0" text="Matiere" />
+                        <TableColumn fx:id="col_note" minWidth="0.0" prefWidth="79.0" text="Note" />
                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="90.0" layoutY="6.0" prefHeight="31.0" prefWidth="608.0" style="-fx-background-color: #B5B6B7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="btn_close" layoutX="570.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="38.0" styleClass="close" stylesheets="@../css/etudiant.css">
+                  <Button fx:id="btn_close" layoutX="680.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="38.0" styleClass="close" stylesheets="@../css/etudiant.css">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>

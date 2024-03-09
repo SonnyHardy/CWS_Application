@@ -246,7 +246,7 @@ public class EtudiantController implements Initializable{
 
 	    @FXML
 	    void voireNotes() {
-
+	    	formVoireNote();
 	    }
 
 	    @FXML
@@ -377,6 +377,40 @@ public class EtudiantController implements Initializable{
 				e.printStackTrace();
 			} 
 	    	
+	    }
+	    
+	    public void formVoireNote() {
+	    	Etudiant etudiant = table_etudiant.getSelectionModel().getSelectedItem();
+	    	FXMLLoader loader = new FXMLLoader();
+	    	loader.setLocation(getClass().getResource("/interfaces/VoireNote.fxml"));
+	    	try {
+				loader.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    	VoireNoteController voireNoteController = loader.getController();
+	    	voireNoteController.showTable(etudiant.getNom(), etudiant.getPrenom());
+	    	    	
+	    	Parent parent = loader.getRoot();
+	    	Stage stage = new Stage();
+	    	parent.setOnMousePressed((MouseEvent event) ->{
+				x = event.getSceneX();
+				y = event.getSceneY();
+			});
+			
+	    	parent.setOnMouseDragged((MouseEvent event) ->{
+				stage.setX(event.getScreenX() - x);
+				stage.setY(event.getScreenY() - y);
+				
+				stage.setOpacity(.8);
+			});
+			
+	    	parent.setOnMouseReleased((MouseEvent event) ->{
+				stage.setOpacity(1);
+			});
+	    	stage.setScene(new Scene(parent));
+	    	stage.initStyle(StageStyle.TRANSPARENT);
+	    	stage.show();
 	    }
 
 	@Override

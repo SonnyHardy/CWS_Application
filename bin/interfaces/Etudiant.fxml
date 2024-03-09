@@ -39,12 +39,12 @@
                            <content>
                               <TableView fx:id="table_etudiant" onMouseClicked="#tableEtudiantClick" prefHeight="577.0" prefWidth="1037.0">
                                 <columns>
-                                  <TableColumn fx:id="col_matricule" prefWidth="83.0" text="Matricule#" />
-                                  <TableColumn fx:id="col_nom" prefWidth="105.0" text="Nom" />
-                                    <TableColumn fx:id="col_prenom" prefWidth="95.0" text="Prenom" />
-                                    <TableColumn fx:id="col_specialite" prefWidth="130.0" text="Specialite" />
-                                    <TableColumn fx:id="col_adresse" prefWidth="113.0" text="Adresse" />
-                                    <TableColumn fx:id="col_dateNais" prefWidth="122.0" text="DateNais" />
+                                  <TableColumn fx:id="col_matricule" prefWidth="150.0" text="Matricule#" />
+                                  <TableColumn fx:id="col_nom" prefWidth="94.0" text="Nom" />
+                                    <TableColumn fx:id="col_prenom" prefWidth="97.0" text="Prenom" />
+                                    <TableColumn fx:id="col_specialite" prefWidth="105.0" text="Specialite" />
+                                    <TableColumn fx:id="col_adresse" prefWidth="94.0" text="Adresse" />
+                                    <TableColumn fx:id="col_dateNais" prefWidth="108.0" text="DateNais" />
                                     <TableColumn fx:id="col_sexe" prefWidth="93.0" text="Sexe" />
                                     <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="151.0" text="Email" />
                                     <TableColumn fx:id="col_telephone" minWidth="0.0" prefWidth="143.0" text="Telephone" />

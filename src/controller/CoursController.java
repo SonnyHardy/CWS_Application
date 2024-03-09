@@ -30,8 +30,6 @@ import model.Cours;
 
 public class CoursController implements Initializable{
 	
-	@FXML
-    private TextField txt_idcours;
 
     @FXML
     private JFXButton btn_idcours;
@@ -53,9 +51,6 @@ public class CoursController implements Initializable{
 
     @FXML
     private TableView<Cours> table_cours;
-
-    @FXML
-    private TableColumn<Cours, String> col_idcours;
 
     @FXML
     private TableColumn<Cours, String> col_specialite;
@@ -87,11 +82,11 @@ public class CoursController implements Initializable{
 
     @FXML
     void ajouterCours() {
-    	if (!txt_idcours.getText().isBlank() && !txt_volume.getText().isBlank() && !cbx_enseignant.getValue().isBlank()
+    	if (!txt_volume.getText().isBlank() && !cbx_enseignant.getValue().isBlank()
     			 && !cbx_matiere.getValue().isBlank() && !cbx_specialite.getValue().isBlank()) {
     		
     		int specialite = 0;
-    		int matiere = 0;
+    		String matiere = "";
     		String enseignant = "";
     		String nom = "";
     		String prenom = "";
@@ -114,7 +109,7 @@ public class CoursController implements Initializable{
 				st = cnx.prepareStatement(sql2);
 				result = st.executeQuery();
 				if (result.next()) {
-					matiere = result.getInt("idMatiere");
+					matiere = result.getString("idMatiere");
 				}
 				
 				st = cnx.prepareStatement(sql3);
@@ -127,16 +122,15 @@ public class CoursController implements Initializable{
 				e.printStackTrace();
 			}
     		
-    		String sql4 = "insert into cours(idCours,enseignant,specialite,matiere,volume) values(?,?,?,?,?)";
+    		String sql4 = "insert into cours(enseignant,specialite,matiere,volume) values(?,?,?,?)";
         	try {
 				st = cnx.prepareStatement(sql4);
-				st.setString(1, txt_idcours.getText());
-				st.setString(2, enseignant);
-				st.setInt(3, specialite);
-				st.setInt(4, matiere);
-				st.setString(5, txt_volume.getText());
+				st.setString(1, enseignant);
+				st.setInt(2, specialite);
+				st.setString(3, matiere);
+				st.setString(4, txt_volume.getText());
 				st.executeUpdate();
-				clearAll();
+				//clearAll();
 				showTable();
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				 alert.setHeaderText("CWS Application");
@@ -159,10 +153,9 @@ public class CoursController implements Initializable{
     @FXML
     void chercherCours(KeyEvent event) {
     	table_cours.getItems().clear();
-    	String sql = "select idCours,nom,prenom,nomSpecialite,nomMatiere,volume from cours,enseignant,matiere,specialite"
+    	String sql = "select nom,prenom,nomSpecialite,nomMatiere,volume from cours,enseignant,matiere,specialite"
     			+ " where cours.enseignant=enseignant.cni and cours.specialite=specialite.idSpecialite"
-    			+ " and cours.matiere=matiere.idMatiere and (idCours like '%"+txt_search.getText()+"%' or "
-    					+ "nom like '%"+txt_search.getText()+"%' or nomSpecialite like '%"+txt_search.getText()+"%' or "
+    			+ " and cours.matiere=matiere.idMatiere and (nom like '%"+txt_search.getText()+"%' or nomSpecialite like '%"+txt_search.getText()+"%' or "
     							+ "nomMatiere like '%"+txt_search.getText()+"%') order by nom";
     	
     	try {
@@ -172,15 +165,14 @@ public class CoursController implements Initializable{
 				String nom = result.getString("nom");
 				String prenom = result.getString("prenom");
 				String enseignant = nom + " " + prenom;
-				listCours.add(new Cours(result.getString("idCours"), enseignant, 
-						result.getString("nomSpecialite"), result.getString("nomMatiere"), result.getString("volume")));
+				listCours.add(new Cours(enseignant, result.getString("nomSpecialite"), 
+						result.getString("nomMatiere"), result.getString("volume")));
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     	
-    	col_idcours.setCellValueFactory(new PropertyValueFactory<Cours, String>("idCours"));
     	col_enseignant.setCellValueFactory(new PropertyValueFactory<Cours, String>("enseignant"));
     	col_specialite.setCellValueFactory(new PropertyValueFactory<Cours, String>("specialite"));
     	col_matiere.setCellValueFactory(new PropertyValueFactory<Cours, String>("matiere"));
@@ -188,20 +180,19 @@ public class CoursController implements Initializable{
     	table_cours.setItems(listCours);
     }
 
-    @FXML
-    void generateIdCours() {
-    	String id = generateRandomId();
-    	txt_idcours.setText(id);
-    }
 
     @FXML
     void modifierCours() {
-    	if (!txt_idcours.getText().isBlank() && !txt_volume.getText().isBlank() && !cbx_enseignant.getValue().isBlank()
-   			 && !cbx_matiere.getValue().isBlank() && !cbx_specialite.getValue().isBlank()) {
+    	if (!txt_volume.getText().isBlank() && cbx_enseignant.getValue() != null
+   			 && cbx_matiere.getValue() != null && cbx_specialite.getValue() != null) {
    		
+    	Cours cours = table_cours.getSelectionModel().getSelectedItem();	
    		int specialite = 0;
-   		int matiere = 0;
+   		int specialite2 = 0;
+   		String matiere = "";
+   		String matiere2 = "";
    		String enseignant = "";
+   		String enseignant2 = "";
    		String nom = "";
    		String prenom = "";
    		String[] nameParts = cbx_enseignant.getValue().split(" ");
@@ -209,7 +200,15 @@ public class CoursController implements Initializable{
    			nom = nameParts[0];
    			prenom = nameParts[1];
    		}
+   		String nom2 = "";
+   		String prenom2 = "";
+   		String[] nameParts2 = cours.getEnseignant().split(" ");
+   		if (nameParts2.length == 2) {
+   			nom2 = nameParts2[0];
+   			prenom2 = nameParts2[1];
+   		}
    		
+   		// On recupere les informations du cours déjà modifié
    		String sql = "select idSpecialite from specialite where nomSpecialite= '"+ cbx_specialite.getValue() +"'";
    		String sql2 = "select idMatiere from matiere where nomMatiere= '"+ cbx_matiere.getValue() +"'";
    		String sql3 = "select cni from enseignant where nom= '"+ nom +"' and prenom= '"+ prenom +"'";
@@ -223,7 +222,7 @@ public class CoursController implements Initializable{
 				st = cnx.prepareStatement(sql2);
 				result = st.executeQuery();
 				if (result.next()) {
-					matiere = result.getInt("idMatiere");
+					matiere = result.getString("idMatiere");
 				}
 				
 				st = cnx.prepareStatement(sql3);
@@ -236,12 +235,40 @@ public class CoursController implements Initializable{
 				e.printStackTrace();
 			}
    		
-   		String sql4 = "update cours set enseignant=?, specialite=?, matiere=?, volume=? where idCours= '"+ txt_idcours.getText() +"'";
+   	// On recupere les informations du cours à modifier
+   		String sql1 = "select idSpecialite from specialite where nomSpecialite= '"+cours.getSpecialite()+"'";
+   		String sql22 = "select idMatiere from matiere where nomMatiere= '"+cours.getMatiere()+"'";
+   		String sql33 = "select cni from enseignant where nom= '"+ nom2 +"' and prenom= '"+ prenom2 +"'";
+   		try {
+   			st = cnx.prepareStatement(sql1);
+   			result = st.executeQuery();
+   			if (result.next()) {
+   				specialite2 = result.getInt("idSpecialite");
+   			}
+   			
+   			st = cnx.prepareStatement(sql22);
+   			result = st.executeQuery();
+   			if (result.next()) {
+   				matiere2 = result.getString("idMatiere");
+   			}
+   			
+   			st = cnx.prepareStatement(sql33);
+   			result = st.executeQuery();
+   			if (result.next()) {
+   				enseignant2 = result.getString("cni");
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}
+   		
+   		String sql4 = "update cours set enseignant=?, specialite=?, matiere=?, volume=? where "
+   				+ "enseignant= '"+enseignant2+"' and specialite= '"+specialite2+"' and matiere= '"+matiere2+"'";
        	try {
 				st = cnx.prepareStatement(sql4);
 				st.setString(1, enseignant);
 				st.setInt(2, specialite);
-				st.setInt(3, matiere);
+				st.setString(3, matiere);
 				st.setString(4, txt_volume.getText());
 				st.executeUpdate();
 				clearAll();
@@ -269,8 +296,46 @@ public class CoursController implements Initializable{
     }
 
     @FXML
-    void supprimerCours() {
-String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
+    void supprimerCours() throws SQLException {
+    	// On récupere le numero cni de l'enseignant
+    	String nom = "";
+		String prenom = "";
+		String[] nameParts = cbx_enseignant.getValue().split(" ");
+		if (nameParts.length == 2) {
+			nom = nameParts[0];
+			prenom = nameParts[1];
+		}
+		String sql = "select cni from enseignant where nom= '"+ nom +"' and prenom= '"+ prenom +"'";
+		String enseignant = "";
+	
+			st = cnx.prepareStatement(sql);
+			result = st.executeQuery();
+			if (result.next()) {
+				enseignant = result.getString("cni");
+			}
+			
+			// On recupere l'id de la specialite
+			String sql2 = "select idSpecialite from specialite where nomSpecialite= '"+cbx_specialite.getValue()+"'";
+			int specialite = 0;
+			
+				st = cnx.prepareStatement(sql2);
+				result = st.executeQuery();
+				if (result.next()) {
+					specialite = result.getInt("idSpecialite");
+				}
+				
+				// On recupere l'id de la matiere
+				String sql3 = "select idMatiere from matiere where nomMatiere= '"+cbx_matiere.getValue()+"'";
+				String matiere = "";
+			
+					st = cnx.prepareStatement(sql3);
+					result = st.executeQuery();
+					if (result.next()) {
+						matiere = result.getString("idMatiere");
+					}
+    	
+		String sql4 = "delete from cours where enseignant= '"+enseignant+"' and specialite= "+specialite
+				+ " and matiere= '"+matiere+"'";
     	
     	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		 alert.setHeaderText("CWS Application");
@@ -278,7 +343,7 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
 		 alert.showAndWait().ifPresent(response ->{
 			 if (response == ButtonType.OK) {
 				 try {
-						st = cnx.prepareStatement(sql);
+						st = cnx.prepareStatement(sql4);
 						st.executeUpdate();
 						
 						clearAll();
@@ -289,6 +354,7 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
 						 alert2.setHeaderText("CWS Application");
 						 alert2.setContentText("Cours supprimé avec succès !");
 						 alert2.showAndWait();
+						 showTable();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -362,9 +428,9 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
     public ObservableList<Cours> listCours = FXCollections.observableArrayList();
     public void showTable() {
     	table_cours.getItems().clear();
-    	String sql = "select idCours,nom,prenom,nomSpecialite,nomMatiere,volume from cours,enseignant,matiere,specialite"
+    	String sql = "select nom,prenom,nomSpecialite,nomMatiere,volume from cours,enseignant,matiere,specialite"
     			+ " where cours.enseignant=enseignant.cni and cours.specialite=specialite.idSpecialite"
-    			+ " and cours.matiere=matiere.idMatiere order by nom";
+    			+ " and cours.matiere=matiere.idMatiere order by nomSpecialite";
     	
     	try {
 			st = cnx.prepareStatement(sql);
@@ -373,15 +439,14 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
 				String nom = result.getString("nom");
 				String prenom = result.getString("prenom");
 				String enseignant = nom + " " + prenom;
-				listCours.add(new Cours(result.getString("idCours"), enseignant, 
-						result.getString("nomSpecialite"), result.getString("nomMatiere"), result.getString("volume")));
+				listCours.add(new Cours(enseignant, result.getString("nomSpecialite"), 
+						result.getString("nomMatiere"), result.getString("volume")));
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     	
-    	col_idcours.setCellValueFactory(new PropertyValueFactory<Cours, String>("idCours"));
     	col_enseignant.setCellValueFactory(new PropertyValueFactory<Cours, String>("enseignant"));
     	col_specialite.setCellValueFactory(new PropertyValueFactory<Cours, String>("specialite"));
     	col_matiere.setCellValueFactory(new PropertyValueFactory<Cours, String>("matiere"));
@@ -395,34 +460,17 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
     @FXML
     void tableCoursClick() {
     	Cours cours = table_cours.getSelectionModel().getSelectedItem();
-    	String sql = "select idCours,nom,prenom,nomSpecialite,nomMatiere,volume from cours,enseignant,matiere,specialite"
-    			+ " where cours.enseignant=enseignant.cni and cours.specialite=specialite.idSpecialite"
-    			+ " and cours.matiere=matiere.idMatiere and idCours= '"+ cours.getIdCours() +"'";
+    	cbx_specialite.setValue(cours.getSpecialite());
+    	cbx_matiere.setValue(cours.getMatiere());
+    	cbx_enseignant.setValue(cours.getEnseignant());
+    	txt_volume.setText(cours.getVolume());
     	
-    	try {
-			st = cnx.prepareStatement(sql);
-			result = st.executeQuery();
-			if (result.next()) {
-				String nom = result.getString("nom");
-				String prenom = result.getString("prenom");
-				String enseignant = nom + " " + prenom;
-				txt_idcours.setText(result.getString("idCours"));
-				cbx_specialite.setValue(result.getString("nomSpecialite"));
-				cbx_matiere.setValue(result.getString("nomMatiere"));
-				cbx_enseignant.setValue(enseignant);
-				txt_volume.setText(result.getString("volume"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	btn_ajouter.setDisable(true);
+    	//btn_ajouter.setDisable(true);
     	btn_modifier.setDisable(false);
     	btn_supprimer.setDisable(false);
     }
     
     public void clearAll() {
-    	txt_idcours.setText("");
     	txt_volume.setText("");
     	cbx_enseignant.getSelectionModel().clearSelection();
     	cbx_matiere.getSelectionModel().clearSelection();
@@ -433,15 +481,51 @@ String sql = "delete from cours where idCours= '"+txt_idcours.getText()+"'";
     	btn_supprimer.setDisable(true);
     }
     
-    public String generateRandomId() {
-    	String characters = "1234567890";
-    	StringBuilder matricule = new StringBuilder();
-    	Random rand = new Random();
-    	for (int i=0; i<5; i++) {
-    		matricule.append(characters.charAt(rand.nextInt(characters.length())));
-    	}
-    	return "C" + matricule.toString();
-    }
+    /*public String generateRandomId(String specialite, String matiere) {
+    	String special = specialite.substring(0, 2).toUpperCase();
+    	int semestre = 0;
+    	
+    	String sql = "select idSpecialite from specialite where nomSpecialite= '"+ specialite +"'";
+    	int specialit = 0;
+    	try {
+			st = cnx.prepareStatement(sql);
+			result = st.executeQuery();
+			if (result.next()) {
+				specialit = result.getInt("idSpecialite");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+    	
+    	String sql2 = "select semestre from matiere where nomMatiere= '"+matiere+"' and "
+    			+ "specialite= "+specialit;
+    	try {
+			st = cnx.prepareStatement(sql2);
+			result = st.executeQuery();
+			if (result.next()) {
+				semestre = result.getInt("semestre");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+    	
+    	String sql3 = "select idCours from cours,matiere where cours.matiere=matiere.idMatiere and "
+    			+ "cours.specialite= "+ specialit+" and semestre= "+semestre;
+    	int counter = 0;
+    	try {
+			st = cnx.prepareStatement(sql3);
+			result = st.executeQuery();
+			while (result.next()) {
+				counter++;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	String matricule = String.format("%02d", counter+1);
+    	
+    	return special + semestre + matricule;
+    } */
 
 
 	@Override

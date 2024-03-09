@@ -49,8 +49,8 @@ public class NewEtudiantController implements Initializable{
 	 	@FXML
 	    TextField txt_matricule;
 
-	    @FXML
-	    private JFXButton btn_matricule;
+	    /*@FXML
+	    private JFXButton btn_matricule; */
 
 	    @FXML
 	    private TextField txt_nom;
@@ -148,12 +148,6 @@ public class NewEtudiantController implements Initializable{
 	    }
 
 	    @FXML
-	    void genererMatricule() {
-	    	String matricule = generateRandomMatricule();
-	    	txt_matricule.setText(matricule);
-	    }
-
-	    @FXML
 	    void insererImage() {
 	    	FileChooser fc = new FileChooser();
 	    	fc.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
@@ -173,15 +167,17 @@ public class NewEtudiantController implements Initializable{
 	    @FXML
 	    void valider() {
 	    	if (modif == false) {
+	    		
 	    		String sql = "insert into etudiant(matricule,nom,prenom,specialite,adresse,dateNais,sexe,email,telephone,image)"
 		    			+ " values(?,?,?,?,?,?,?,?,?,?)";
 		    	
-		    	if (!txt_matricule.getText().isBlank() && !txt_nom.getText().isBlank() && !txt_prenom.getText().isBlank() 
+		    	if (!txt_nom.getText().isBlank() && !txt_prenom.getText().isBlank() 
 		    			&& !txt_email.getText().isBlank() && !txt_telephone.getText().isBlank() 
 		    			&& dp_date.getValue() != null && !txt_adresse.getText().isBlank() && !cbx_sexe.getSelectionModel().isEmpty() 
 		    			&& !cbx_specialite.getSelectionModel().isEmpty() && img_etudiant.getImage() != null 
 		    			&& lbl_error.isDisable()) {
 		    		
+		    		generateRandomMatricule();
 		    		String matricule = txt_matricule.getText();
 		    		String nom = txt_nom.getText();
 		    		String prenom = txt_prenom.getText();
@@ -222,7 +218,7 @@ public class NewEtudiantController implements Initializable{
 						fis = new FileInputStream(image);
 						st.setBinaryStream(10, fis, image.length());
 						st.executeUpdate();
-						clearAll();
+						//clearAll();
 						Alert alert = new Alert(Alert.AlertType.INFORMATION);
 						 alert.setHeaderText("CWS Application");
 						 alert.setContentText("Etudiant ajouté avec succès !");
@@ -243,7 +239,7 @@ public class NewEtudiantController implements Initializable{
 	    		String sql = "update etudiant set nom=?, prenom=?, specialite=?, adresse=?, dateNais=?, "
 	    				+ "sexe=?, email=?, telephone=?, image=? where matricule= '"+txt_matricule.getText()+"'";
 	    		
-	    		if (!txt_matricule.getText().isBlank() && !txt_nom.getText().isBlank() && !txt_prenom.getText().isBlank() 
+	    		if (!txt_nom.getText().isBlank() && !txt_prenom.getText().isBlank() 
 		    			&& !txt_email.getText().isBlank() && !txt_telephone.getText().isBlank() 
 		    			&& dp_date.getValue() != null && !txt_adresse.getText().isBlank() && !cbx_sexe.getSelectionModel().isEmpty() 
 		    			&& !cbx_specialite.getSelectionModel().isEmpty() && img_etudiant.getImage() != null 
@@ -344,14 +340,44 @@ public class NewEtudiantController implements Initializable{
 	    	cbx_sexe.setItems(FXCollections.observableArrayList(listSexe));
 	    }
 	    
-	    public String generateRandomMatricule() {
-	    	String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	    	StringBuilder matricule = new StringBuilder();
-	    	Random rand = new Random();
-	    	for (int i=0; i<5; i++) {
-	    		matricule.append(characters.charAt(rand.nextInt(characters.length())));
-	    	}
-	    	return "CWS" + matricule.toString();
+	    public void generateRandomMatricule() {
+	    	String matricule = getMatricule(cbx_specialite.getValue());
+			txt_matricule.setText(matricule);
+	    		
+	    } 
+	    
+	    public String getMatricule(String specialite) {
+	    	LocalDate date = LocalDate.now();
+	    	String annee = String.valueOf(date.getYear()).substring(2);
+	    	String special = specialite.substring(0, 2).toUpperCase();
+	    	
+	    	String sql = "select idSpecialite from specialite where nomSpecialite= '"+ specialite +"'";
+	    	int specialit = 0;
+	    	try {
+				st = cnx.prepareStatement(sql);
+				result = st.executeQuery();
+				if (result.next()) {
+					specialit = result.getInt("idSpecialite");
+				}
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+	    	
+	    	String sql2 = "select matricule from etudiant where specialite= "+ specialit;
+	    	int counter = 0;
+	    	try {
+				st = cnx.prepareStatement(sql2);
+				result = st.executeQuery();
+				while (result.next()) {
+					counter++;
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	    	String matricule = String.format("%05d", counter+1);
+	    	
+	    	return annee + "CWS" + special + matricule;
 	    }
 	    
 	    public void clearAll() {
@@ -360,6 +386,7 @@ public class NewEtudiantController implements Initializable{
 	    	txt_prenom.setText("");
 	    	txt_email.setText("");
 	    	txt_telephone.setText("");
+	    	txt_adresse.setText("");
 	    	dp_date.setValue(null);
 	    	cbx_sexe.getSelectionModel().clearSelection();
 	    	cbx_specialite.getSelectionModel().clearSelection();
@@ -385,10 +412,11 @@ public class NewEtudiantController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		txt_matricule.setDisable(true);
 		cnx = ConnexionMysql.connexionDB();
 		remplirComboSexe();
 		remplirComboSpecialite();
-		//System.out.println(etudiantController.isBol());
+		
 	}
 	
 	

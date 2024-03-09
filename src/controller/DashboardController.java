@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,6 +27,34 @@ public class DashboardController implements Initializable{
 	
 	 @FXML
 	 private Button btn_logout;
+	 
+	 @FXML
+	    private JFXButton btn_dashboard;
+
+	    @FXML
+	    private JFXButton btn_etudiant;
+
+	    @FXML
+	    private JFXButton btn_cours;
+
+	    @FXML
+	    private JFXButton btn_enseignant;
+
+	    @FXML
+	    private JFXButton btn_note;
+
+	    @FXML
+	    private JFXButton btn_scolarite;
+
+	    @FXML
+	    private JFXButton btn_attestation;
+	    
+	    @FXML
+	    private JFXButton btn_emploiTemps;
+	 
+	 @FXML
+	 private AnchorPane anchor_interface;
+	 private Parent fxml;
 	 
 	 private double x;
 	 private double y;
@@ -86,10 +117,103 @@ public class DashboardController implements Initializable{
 				 }
 			 });
 	    }
+	    
+	    @FXML
+	    void attestationForm() {
+
+	    }
+	    
+	    @FXML
+	    void coursForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Cours.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    @FXML
+	    void dashboardForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Home.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    @FXML
+	    void enseignantForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Enseignant.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    @FXML
+	    void etudiantForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Etudiant.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+	    
+	    @FXML
+	    void noteForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Note.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    @FXML
+	    void scolariteForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Transaction.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+	    
+	    @FXML
+	    void emploiTempsForm() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/EmploiTemps.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+	    
+	    public void lancement() {
+	    	try {
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/Home.fxml"));
+				anchor_interface.getChildren().removeAll();
+				anchor_interface.getChildren().setAll(fxml);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		lancement();
 	}
 
 }

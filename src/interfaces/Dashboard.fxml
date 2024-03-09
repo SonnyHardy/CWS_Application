@@ -27,7 +27,7 @@
                                     <Image url="@../images/school2.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="71.0" layoutY="14.0" text="Student Management System">
+                              <Label layoutX="71.0" layoutY="14.0" text="Cometal Welding School">
                                  <font>
                                     <Font name="Tahoma" size="15.0" />
                                  </font>
@@ -70,13 +70,13 @@
                                     <Font name="Tahoma" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="72.0" layoutY="150.0" text="Sonny" textFill="WHITE">
+                              <Label layoutX="72.0" layoutY="150.0" text="Admin" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Black" size="20.0" />
                                  </font>
                               </Label>
                               <Line endX="100.0" layoutX="116.0" layoutY="202.0" startX="-100.0" stroke="WHITE" />
-                              <JFXButton layoutX="25.0" layoutY="231.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Dashboard" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_dashboard" layoutX="4.0" layoutY="215.0" onAction="#dashboardForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Dashboard" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton layoutX="25.0" layoutY="285.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Etudiants" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_etudiant" layoutX="4.0" layoutY="269.0" onAction="#etudiantForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Etudiants" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -100,7 +100,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton layoutX="25.0" layoutY="339.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Cours" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_cours" layoutX="4.0" layoutY="323.0" onAction="#coursForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Cours" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -112,7 +112,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton layoutX="25.0" layoutY="398.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Enseignant" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_enseignant" layoutX="4.0" layoutY="371.0" onAction="#enseignantForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Enseignant" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -142,7 +142,7 @@
                                     <Font name="Tahoma" size="15.0" />
                                  </font>
                               </Label>
-                              <JFXButton layoutX="24.0" layoutY="459.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Notes" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_note" layoutX="4.0" layoutY="420.0" onAction="#noteForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Notes" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -154,7 +154,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton layoutX="17.0" layoutY="510.0" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Scolarité" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_scolarite" layoutX="4.0" layoutY="469.0" onAction="#scolariteForm" prefHeight="38.0" prefWidth="183.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Scolarité" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -166,7 +166,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton layoutX="14.0" layoutY="567.0" prefHeight="38.0" prefWidth="214.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="  Attestation" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                              <JFXButton fx:id="btn_attestation" layoutX="4.0" layoutY="563.0" onAction="#attestationForm" prefHeight="38.0" prefWidth="214.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="    Attestation" textFill="WHITE" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                                  <font>
                                     <Font name="Tahoma Bold" size="14.0" />
                                  </font>
@@ -178,13 +178,25 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
+                              <JFXButton fx:id="btn_emploiTemps" layoutY="517.0" onAction="#emploiTempsForm" prefHeight="38.0" prefWidth="214.0" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="     Emploi de Temps" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/emploi_de_temps.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
                            </children>
                         </AnchorPane>
                      </children>
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane fx:id="anchor_interface" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane prefHeight="696.0" prefWidth="1071.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>

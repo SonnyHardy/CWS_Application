@@ -24,9 +24,6 @@ public class VoireCoursController implements Initializable{
     private TableView<Cours> table_cours;
 
     @FXML
-    private TableColumn<Cours, String> col_idcours;
-
-    @FXML
     private TableColumn<Cours, String> col_specialite;
 
     @FXML
@@ -53,7 +50,7 @@ public class VoireCoursController implements Initializable{
     	this.setCni(cni);
     	
     	table_cours.getItems().clear();
-    	String sql = "select idCours,nomSpecialite,nomMatiere,volume from cours,matiere,specialite"
+    	String sql = "select nomSpecialite,nomMatiere,volume from cours,matiere,specialite"
     			+ " where cours.specialite=specialite.idSpecialite"
     			+ " and cours.matiere=matiere.idMatiere and enseignant = '"+ cni +"' order by nomSpecialite";
     	
@@ -61,22 +58,19 @@ public class VoireCoursController implements Initializable{
 			st = cnx.prepareStatement(sql);
 			result = st.executeQuery();
 			while (result.next()) {
-				listCours.add(new Cours(result.getString("idCours"), "", 
-						result.getString("nomSpecialite"), result.getString("nomMatiere"), result.getString("volume")));
+				listCours.add(new Cours("",result.getString("nomSpecialite"), result.getString("nomMatiere"), 
+						result.getString("volume")));
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     	
-    	col_idcours.setCellValueFactory(new PropertyValueFactory<Cours, String>("idCours"));
-    	//col_enseignant.setCellValueFactory(new PropertyValueFactory<Cours, String>("enseignant"));
     	col_specialite.setCellValueFactory(new PropertyValueFactory<Cours, String>("specialite"));
     	col_matiere.setCellValueFactory(new PropertyValueFactory<Cours, String>("matiere"));
     	col_volume.setCellValueFactory(new PropertyValueFactory<Cours, String>("volume"));
     	table_cours.setItems(listCours);
-    	//btn_modifier.setDisable(true);
-    	//btn_supprimer.setDisable(true);
+    	
     	System.out.println("Mise à jour de la table");
     }
     

@@ -20,10 +20,9 @@
                <children>
                   <TableView fx:id="table_cours" layoutX="9.0" layoutY="8.0" onMouseClicked="#tableCoursClick" prefHeight="419.0" prefWidth="493.0">
                     <columns>
-                      <TableColumn fx:id="col_idcours" prefWidth="82.0" text="ID Cours" />
-                      <TableColumn fx:id="col_specialite" prefWidth="120.0" text="Spécialité" />
-                        <TableColumn fx:id="col_matiere" minWidth="0.0" prefWidth="178.0" text="Matière" />
-                        <TableColumn fx:id="col_volume" minWidth="0.0" prefWidth="109.0" text="Volume Horaire" />
+                      <TableColumn fx:id="col_specialite" prefWidth="184.0" text="Spécialité" />
+                        <TableColumn fx:id="col_matiere" minWidth="0.0" prefWidth="208.0" text="Matière" />
+                        <TableColumn fx:id="col_volume" minWidth="0.0" prefWidth="98.0" text="Volume Horaire" />
                     </columns>
                   </TableView>
                </children>

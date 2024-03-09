@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,22 +17,9 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		//EtudiantController etudiantController = new EtudiantController();
-		//NewEtudiantController newEtudiantController = new NewEtudiantController(etudiantController);
-		/*etudiantController.ecouteurProperty().addListener(new ChangeListener<Boolean>() {
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if(newValue) {
-					System.out.println("Ancien etat: " + oldValue);
-					System.out.println("Nouvel etat: " + newValue);
-					etudiantController.showTable();
-					etudiantController.setEcouteur(false);
-				}
-			}
-		}); */
-		
 		
 		try {	
-			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/EmploiTemps.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/Dashboard.fxml"));
 			Scene scene = new Scene(root);
 			
 			root.setOnMousePressed((MouseEvent event) ->{
@@ -52,7 +40,7 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			//primaryStage.getIcons().add(new Image(getClass().getResource("icon.png").toExternalForm()));
+			primaryStage.getIcons().add(new Image(getClass().getResource("icon.png").toExternalForm()));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -18,7 +18,6 @@
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="478.0" prefWidth="960.0" style="-fx-background-color: #fff;" styleClass="shadow" stylesheets="@../css/etudiant.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="txt_matricule" layoutX="186.0" layoutY="70.0" prefHeight="30.0" prefWidth="157.0" styleClass="textfield" stylesheets="@../css/etudiant.css" />
-            <JFXButton fx:id="btn_matricule" layoutX="44.0" layoutY="63.0" onAction="#genererMatricule" prefHeight="40.0" prefWidth="97.0" styleClass="modifier-btn" stylesheets="@../css/etudiant.css" text="Matricule#" />
             <Label layoutX="122.0" layoutY="136.0" text="Nom:">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
@@ -133,6 +132,11 @@
                   <Image url="@../images/error.png" />
                </image>
             </ImageView>
+            <Label layoutX="103.0" layoutY="76.0" text="Matricule:">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
