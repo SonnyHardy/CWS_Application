@@ -198,6 +198,14 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Label>
+                                    <Label fx:id="lbl_releveNote" layoutX="138.0" layoutY="314.0" onMouseClicked="#imprimerReleveNote" text="Relevé de Notes" textFill="RED">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="13.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>

@@ -116,7 +116,8 @@ public class NoteController implements Initializable{
 			}
 		
 		// On recupere l'id de la matiere
-		String sql3 = "select idMatiere from matiere where nomMatiere= '"+cbx_matiere.getValue()+"'";
+		String sql3 = "select idMatiere from matiere,specialite where matiere.specialite=specialite.idSpecialite and "
+				+ "nomMatiere= '"+cbx_matiere.getValue()+"' and nomSpecialite= '"+cbx_specialite.getValue()+"'";
 		String matiere = "";
 	
 			st = cnx.prepareStatement(sql3);
@@ -451,7 +452,7 @@ public class NoteController implements Initializable{
     	ObservableList<Note> listNote = FXCollections.observableArrayList();
     	String sql = "select nom,prenom,nomSpecialite,nomEvaluation,nomMatiere,resultat from note,etudiant,matiere,evaluation,specialite "
     			+ "where note.etudiant=etudiant.matricule and note.matiere=matiere.idMatiere and note.evaluation=evaluation.idEvaluation "
-    			+ "and etudiant.specialite=specialite.idSpecialite";
+    			+ "and etudiant.specialite=specialite.idSpecialite order by nomSpecialite";
     	
     	try {
 			st = cnx.prepareStatement(sql);

@@ -19,7 +19,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		try {	
-			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/Dashboard.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/interfaces/Etudiant.fxml"));
 			Scene scene = new Scene(root);
 			
 			root.setOnMousePressed((MouseEvent event) ->{

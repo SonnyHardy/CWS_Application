@@ -13,7 +13,9 @@ module CWS_Application {
 	requires fontawesomefx;
 	requires bcrypt;
 	requires javax.mail;
-	requires activation; 
+	requires activation;
+	requires layout; 
+	requires kernel;
 	
 	exports controller to javafx.fxml;
 	opens model to javafx.base;
